@@ -1,0 +1,98 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+}
+
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+#stage:active { cursor: grabbing; }
+
+/* ---------------- 思考云朵框 ---------------- */
+.bubble {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 210px;
+  min-height: 88px;
+  margin-left: -105px;
+  background: #ffffff;
+  border: 2.5px solid #cfd8dc;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+}
+.bubble-text {
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  word-break: break-all;
+}
+.bubble.steady   .bubble-text { color: #1976d2; }
+.bubble.decrease .bubble-text { color: #e53935; font-size: 20px; }
+.bubble.increase .bubble-text { color: #2e7d32; font-size: 20px; }
+.bubble.error    .bubble-text { color: #ef6c00; }
+.bubble.loading  .bubble-text { color: #9e9e9e; font-weight: 500; }
+
+.bubble.shake  { animation: bubbleShake 0.38s ease-in-out 2; }
+.bubble.bounce { animation: bubbleBounce 0.3s ease; }
+
+@keyframes bubbleShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes bubbleBounce {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+/* ---------------- 云朵引导小圆点（指向头部） ---------------- */
+.thought-dots i {
+  position: absolute;
+  left: 50%;
+  background: #ffffff;
+  border: 2px solid #cfd8dc;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.thought-dots i:nth-child(1) { width: 13px; height: 13px; margin-left: -8px; top: 102px; }
+.thought-dots i:nth-child(2) { width: 10px; height: 10px; margin-left: 3px;  top: 124px; }
+.thought-dots i:nth-child(3) { width: 8px;  height: 8px;  margin-left: 14px; top: 143px; }
+
+/* ---------------- 人物 ---------------- */
+#charWrap {
+  position: absolute;
+  overflow: visible;
+}
+#character {
+  position: absolute;
+  display: block;
+  transform-origin: 50% 100%;
+  -webkit-user-drag: none;
+}
+#character.clicking { animation: clickPulse 0.3s ease; }
+
+@keyframes clickPulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.15); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}

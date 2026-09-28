@@ -1,0 +1,16 @@
+{
+  "loginUrl": "https://www.trae.cn/",
+  "pointsUrl": "https://www.trae.cn/dashboard#usage",
+  "pointsSelector": "span[data-testid=\"user-entitlement-total-balance\"]",
+  "sessionSave": "electron-session",
+  "refreshIntervalMs": 10000,
+  "decreaseAlertMs": 5000,
+  "increaseGreenEnabled": true,
+  "increaseAlertMs": 4000,
+  "imageScale": 0.2,
+  "trimTransparentMargin": true,
+  "windowPosition": [
+    1261,
+    502
+  ]
+}
